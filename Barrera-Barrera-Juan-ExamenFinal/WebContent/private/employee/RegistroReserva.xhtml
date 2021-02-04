@@ -84,36 +84,46 @@
                                     </h:form>
                                     
                                     
-                                    
-                                    <h:form id="fa3">
-                                        <div id="detalleFactura">
-                                            <p:dataTable id="tablaDetalle" value="#{facturaDetalleBean.detallesFac}" var="detalle" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-                                                <p:column>
-                                                    <f:facet name="header" id="prodId">Producto</f:facet>#{detalle.producto.nombre}
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header" id="prodNombre">Precio</f:facet>#{detalle.producto.precio}
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header" id="prodStock">Cantidad</f:facet>#{detalle.cantidad}
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header" id="prodBodega">Total</f:facet>#{detalle.total}
-                                                </p:column>
-                                            </p:dataTable>
-                                        </div>
+                                    <h:form id="fa4">
+                                        <h3>Buscar Restaurante</h3>
                                         <p></p>
-                                        <p>
-                                            <h:outputLabel for="salidaDireccion" value="Subtotal: #{facturaDetalleBean.subtotal}"></h:outputLabel>
-                                        </p>
-                                        <p>
-                                            <h:outputLabel for="salidaDireccion" value="IVA: #{facturaDetalleBean.iva}"></h:outputLabel>
-                                        </p>
-                                        <h:outputLabel for="salidaDireccion" value="Total: #{facturaDetalleBean.totalFinal}"></h:outputLabel>
+                                        <h:inputText class="form-control" id="nombreBuscar" value="#{reservaBean.nombreRestaurante}" type="text"></h:inputText>
+                                        <h:commandButton class="btn btn-primary btn-block" value="buscarRestuarante" action="#{reservaBean.buscarRestauranteNombre}">
+                                            <f:ajax execute="nombreBuscar" render="salidaNombreR salidaDireccionR salidaTelefonoR salidaAforo" />
+                                        </h:commandButton>
                                         <p></p>
-                                        <p:commandButton class="btn btn-primary btn-block" value="Realizar Factura" action="#{facturaDetalleBean.guardarFactura()}" update=" fa2 fa3">
-                                        </p:commandButton>
+                                        <h:outputLabel for="salidaNombreR" value="Nombre:"></h:outputLabel>
+                                        <h:inputText class="form-control" id="salidaNombreR" value="#{reservaBean.nombreRestaurante}"></h:inputText>
+                                        <p></p>
+                                        <h:outputLabel for="salidaDireccionR" value="Direccion"></h:outputLabel>
+                                        <h:inputText class="form-control" id="salidaDireccionR" value="#{reservaBean.direccionRestuarante}"></h:inputText>
+                                        <p></p>
+                                        <h:outputLabel for="salidaTelefonoR" value="Telefono:"></h:outputLabel>
+                                        <h:inputText class="form-control" id="salidaTelefonoR" value="#{reservaBean.telefonoRestuarante}"></h:inputText>
+                                        <p></p>
+                                        <h:outputLabel for="salidaAforo" value="Aforo"></h:outputLabel>
+                                        <h:inputText class="form-control" id="salidaAforo" value="#{reservaBean.aforo}"></h:inputText>
+                                        <p></p>
                                     </h:form>
+                                    
+                                    
+                                    <h:form>
+								        
+								       	<p:outputLabel for="fechaIngreso" value="Ingrese la fecha de la cita: "/>
+        								<p:calendar id="fechaIngreso"  value="#{reservaBean.fechaIngreso}" pattern="dd/MM/yyyy HH:mm:ss" timeZone="UTC"/>
+								
+								        <p:outputLabel for="numeroPersonas" value="Ingrese Numero de personas: "/><br/>
+								        <p:inputText value="#{reservaBean.numeroPersonas}"/><br/>
+								
+								
+								        <h:commandButton value="Crear Reserva" action="#{reservaBean.crearReserva}">
+								            <f:ajax render="mensaje"/>
+								        </h:commandButton><br/>
+								
+								        <h:outputLabel id="mensaje" value="Mensaje: #{reservaBean.mensajes}"/>
+								
+								    </h:form>
+                                    
                                 </div>
                             </div>
                         </div>

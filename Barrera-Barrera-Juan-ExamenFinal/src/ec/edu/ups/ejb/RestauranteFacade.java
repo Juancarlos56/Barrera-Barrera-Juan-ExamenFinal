@@ -26,5 +26,18 @@ public class RestauranteFacade extends AbstractFacade<Restuarante>{
 		// TODO Auto-generated method stub
 		return em;
 	}
+	
+	public Restuarante buscarPorNombre(String nombre) {
+		
+		System.out.println("Nombre: "+nombre);
+    	Restuarante restaurante=null;
+    	String consulta = "Select c From Restuarante c Where c.nombre=:nombre";
+    	try {
+    		restaurante= (Restuarante) em.createQuery(consulta).setParameter("nombre", nombre).getSingleResult();
+    	}catch(Exception e) {
+    		System.out.println(">>>Warning (buscarPorCedula: )"+e.getMessage());
+    	}
+    	return restaurante;
+    }
 
 }
