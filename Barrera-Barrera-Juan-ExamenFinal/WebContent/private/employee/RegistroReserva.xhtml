@@ -107,20 +107,26 @@
                                     </h:form>
                                     
                                     
-                                    <h:form>
+                                    <h:form id="fa5">
 								        
 								       	<p:outputLabel for="fechaIngreso" value="Ingrese la fecha de la cita: "/>
-        								<p:calendar id="fechaIngreso"  value="#{reservaBean.fechaIngreso}" pattern="dd/MM/yyyy HH:mm:ss" timeZone="UTC"/>
-								
-								        <p:outputLabel for="numeroPersonas" value="Ingrese Numero de personas: "/><br/>
-								        <p:inputText value="#{reservaBean.numeroPersonas}"/><br/>
-								
-								
-								        <h:commandButton value="Crear Reserva" action="#{reservaBean.crearReserva}">
+        								<h:inputText class="form-control" id="fechaIngreso" value="#{reservaBean.fechaIngreso}" type="text"></h:inputText>
+                                        
+        		
+										<br></br>
+										
+								        <p:outputLabel for="numeroPersonas" value="Ingrese Numero de personas: "/>
+								        
+										<h:inputText class="form-control" id="numeroPersonas" value="#{reservaBean.numeroPersonas}" type="text"></h:inputText>
+                                       
+										<br></br>
+										
+										
+								        <h:commandButton value="Crear Reserva" action="#{reservaBean.crearReservaRest}">
 								            <f:ajax render="mensaje"/>
 								        </h:commandButton><br/>
 								
-								        <h:outputLabel id="mensaje" value="Mensaje: #{reservaBean.mensajes}"/>
+								        <h:outputLabel id="mensaje" value="Mensaje: #{reservaBean.mensaje}"/>
 								
 								    </h:form>
                                     

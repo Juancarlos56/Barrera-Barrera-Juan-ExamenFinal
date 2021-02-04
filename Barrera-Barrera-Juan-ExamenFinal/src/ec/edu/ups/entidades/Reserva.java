@@ -3,6 +3,7 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -50,6 +51,14 @@ public class Reserva implements Serializable {
 		this.numeroPersonas = numeroPersonas;
 		this.clienteReserva = clienteReserva;
 		this.restauranteReserva = restauranteReserva;
+	}
+	
+	public Reserva(int id, Calendar fecha, int numeroPersonas, Cliente clienteReserva) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.numeroPersonas = numeroPersonas;
+		this.clienteReserva = clienteReserva;
 	}
 
 	public Reserva(Calendar fecha, int numeroPersonas, Cliente clienteReserva, Restuarante restauranteReserva) {

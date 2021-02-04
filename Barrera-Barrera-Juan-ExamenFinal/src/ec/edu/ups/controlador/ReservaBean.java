@@ -1,10 +1,15 @@
 package ec.edu.ups.controlador;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
@@ -17,7 +22,7 @@ import ec.edu.ups.entidades.Restuarante;
 
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
-@RequestScoped
+@SessionScoped
 public class ReservaBean implements Serializable{
 
 	
@@ -47,7 +52,7 @@ public class ReservaBean implements Serializable{
     
 	
 	
-	private Calendar fechaIngreso; 
+	private String fechaIngreso; 
 	private int numeroPersonas; 
 	private String mensaje;
    
@@ -65,7 +70,7 @@ public class ReservaBean implements Serializable{
 		    	this.setTelefono(cliente.getTelefono());
 		    	this.setCorreo(cliente.getCorreo());
 			}else {
-				System.out.println("Cedula: "+cedula);
+				System.out.println("Cedula no encontrada: "+cedula);
 				
 			}
 	    	
@@ -86,7 +91,10 @@ public class ReservaBean implements Serializable{
 	    	
 	 }
 	 
-	 public void crearReserva() {
+	 public void crearReservaRest(){
+		 
+		System.out.println("Si llega");
+		 
 		Restuarante resturante = null;
 		Cliente cliente = null;
 		Reserva reserva = null;
@@ -105,9 +113,20 @@ public class ReservaBean implements Serializable{
 			
 			if (capacidad > 1) {
 				
+				System.out.println("Hasta aqui"+fechaIngreso);
 				
+				/*
+				DateFormat fechaIngresoFormato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date fechaIngresoConDate = null;
+				try {
+					fechaIngresoConDate = fechaIngresoFormato.parse(fechaIngreso);
+					reserva = new Reserva(fechaIngresoConDate, numeroPersonas, cliente, resturante);
+					ejbReserva.create(reserva);
+				} catch (ParseException e) {
+					System.out.println("Problemas con fecha: "+fechaIngreso);
+				}
+				*/
 				
-				reserva = new Reserva(fechaIngreso, numeroPersonas, cliente, resturante);
 			}else {
 				mensaje = "No hay suficiente espacio en este restaurante";
 			}
@@ -214,11 +233,11 @@ public class ReservaBean implements Serializable{
 		this.aforo = aforo;
 	}
 
-	public Calendar getFechaIngreso() {
+	public String getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Calendar fechaIngreso) {
+	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
