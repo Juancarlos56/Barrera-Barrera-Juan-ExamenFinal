@@ -37,8 +37,9 @@ public class ReservaBean implements Serializable{
 		
 	}
 	
-	 public void buscarPersonaCedula() {
-	    	cliente = ejbCliente.buscarPorCedula(this.getCedula());
+	 public void buscarPersonaCedulaCliente() {
+	    	cliente = ejbCliente.buscarPorCedula(cedula);
+	    	System.out.println("Cliente: ");
 	    	if (cliente != null) {
 	    		this.setNombre(cliente.getNombre());
 		    	this.setApellido(cliente.getApellido());

@@ -37,7 +37,7 @@ public class ClienteBean implements Serializable{
 		
 		
     	if(nombre!=null && nombre.equals("")!=true) {
-    		Cliente cliente= new Cliente(nombre, apellido, cedula, direccion, telefono, correo);
+    		Cliente cliente= new Cliente(cedula, nombre, apellido, direccion, telefono, correo);
     		ejbCliente.create(cliente);
         	nombre="";
         	apellido="";

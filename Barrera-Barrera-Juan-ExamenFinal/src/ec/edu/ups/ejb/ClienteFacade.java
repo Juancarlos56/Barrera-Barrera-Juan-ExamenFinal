@@ -1,12 +1,13 @@
 package ec.edu.ups.ejb;
 
 import javax.ejb.LocalBean;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.entidades.Cliente;
-import ec.edu.ups.entidades.Persona;
+
 
 /**
  * Session Bean implementation class ClienteFacade
@@ -28,8 +29,10 @@ public class ClienteFacade extends AbstractFacade<Cliente>{
 	}
 	
 	public Cliente buscarPorCedula (String cedula) {
+		
+		System.out.println("Cedula en buscar cedula: "+cedula);
     	Cliente persona=null;
-    	String consulta = "Select per From Cliente per Where per.cedula=:cedula";
+    	String consulta = "Select c From Cliente c Where c.cedula=:cedula";
     	try {
     		persona= (Cliente) em.createQuery(consulta).setParameter("cedula", cedula).getSingleResult();
     	}catch(Exception e) {

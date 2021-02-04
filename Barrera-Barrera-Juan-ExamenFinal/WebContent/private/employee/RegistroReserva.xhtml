@@ -52,27 +52,25 @@
 
                             <div class="card-body ">
 
-                               
+                                
                             </div>
                         </div>
                     </div>
                     <div style="WIDTH: 100%;">
                         <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-category">Cliente</h5>
-                            </div>
+                            
                             <div class="card-body">
                                 <div id="contenedorFactura">
                                     <h:form id="fa2">
                                         <h3>Buscar Cliente</h3>
                                         <p></p>
                                         <h:inputText class="form-control" id="cedulaBuscar" value="#{reservaBean.cedula}" type="text"></h:inputText>
-                                        <h:commandButton class="btn btn-primary btn-block" value="buscarPersona" action="#{reservaBean.buscarPersonaCedula}">
+                                        <h:commandButton class="btn btn-primary btn-block" value="buscarPersona" action="#{reservaBean.buscarPersonaCedulaCliente}">
                                             <f:ajax execute="cedulaBuscar" render="salidaNombre salidaApellido salidaCedula salidaTelefono salidaDireccion" />
                                         </h:commandButton>
                                         <p></p>
                                         <h:outputLabel for="salidaNombre" value="Nombre:"></h:outputLabel>
-                                        <h:inputText class="form-control" id="salidaNombre" value="#{reservaBeann.nombre}"></h:inputText>
+                                        <h:inputText class="form-control" id="salidaNombre" value="#{reservaBean.nombre}"></h:inputText>
                                         <p></p>
                                         <h:outputLabel for="salidaApellido" value="Apellido:"></h:outputLabel>
                                         <h:inputText class="form-control" id="salidaApellido" value="#{reservaBean.apellido}"></h:inputText>
@@ -84,6 +82,9 @@
                                         <h:inputText class="form-control" id="salidaDireccion" value="#{reservaBean.direccion}"></h:inputText>
                                         <p></p>
                                     </h:form>
+                                    
+                                    
+                                    
                                     <h:form id="fa3">
                                         <div id="detalleFactura">
                                             <p:dataTable id="tablaDetalle" value="#{facturaDetalleBean.detallesFac}" var="detalle" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
