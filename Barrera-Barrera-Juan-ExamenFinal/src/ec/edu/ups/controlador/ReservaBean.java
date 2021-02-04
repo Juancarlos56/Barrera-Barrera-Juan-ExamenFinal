@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -115,6 +116,13 @@ public class ReservaBean implements Serializable{
 				
 				System.out.println("Hasta aqui"+fechaIngreso);
 				
+				Calendar cal = Calendar.getInstance();
+				SimpleDateFormat formato =  new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+				
+				reserva = new Reserva(cal, numeroPersonas, cliente, resturante);
+				ejbReserva.create(reserva);
+				
+				//cal.setTime(formato.parse(fechaIngreso));
 				/*
 				DateFormat fechaIngresoFormato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date fechaIngresoConDate = null;
