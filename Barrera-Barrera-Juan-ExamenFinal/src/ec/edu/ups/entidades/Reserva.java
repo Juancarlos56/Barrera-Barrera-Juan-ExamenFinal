@@ -53,6 +53,14 @@ public class Reserva implements Serializable {
 		this.restauranteReserva = restauranteReserva;
 	}
 	
+	public Reserva(int id, Calendar fecha, int numeroPersonas, Restuarante restauranteReserva) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.numeroPersonas = numeroPersonas;
+		this.restauranteReserva = restauranteReserva;
+	}
+	
 	public Reserva(int id, Calendar fecha, int numeroPersonas, Cliente clienteReserva) {
 		super();
 		this.id = id;
